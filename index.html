@@ -102,27 +102,31 @@ td img {
         function setElapsed() {
             var elapsed = (Date.now() - fallenSince) / 1000;
             
-            var out = '<b>';
-            if( elapsed / 86400 >= 1 ) {
-                out += Math.floor(elapsed / 86400);
-                out += '</b> dagen <b>';
+            let out = '';
+            let passed = Math.floor(elapsed / 86400);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += passed == 1? 'dag': 'dagen ';
                 elapsed = elapsed % 86400;
             }
 
-            if( elapsed / 3600 >= 1 ) {
-                out += Math.floor(elapsed / 3600);
-                out += '</b> uur <b>';
+            passed = Math.floor(elapsed / 3600);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += 'uur ';
                 elapsed = elapsed % 3600;
             }
 
-            if( elapsed / 60 >= 1 ) {
-                out += Math.floor(elapsed / 60);
-                out += '</b> minuten <b>';
+            passed = Math.floor(elapsed / 60);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += passed == 1? 'minuut': 'minuten ';
                 elapsed = elapsed % 60;
             }
 
-            out += Math.floor(elapsed);
-            out += '</b> seconden';
+            passed = Math.floor(elapsed);
+            out += '<b>' + passed + '</b>';
+            out += passed == 1? 'seconde': 'seconden';
 
             document.getElementById('time').innerHTML = out;
         }
