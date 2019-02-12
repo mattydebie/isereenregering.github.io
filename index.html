@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>Is er een regering?</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: Courier;
+}
+
+body {
+  background: url('bg.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Transparency animation */
+@keyframes bgtransparent {
+  from {background-color: red;}
+  to {background-color: #ff0000aa;}
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border: none;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #ff0000;
+
+  animation-name: bgtransparent;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+tr {
+  height: 33%;
+}
+
+td {
+  width: 33%;
+  text-align: center;
+}
+
+h1 {
+    font-size: 10rem;
+}
+
+h3 {
+    color: #c9c9c9;
+    font-size: 4rem;
+    font-family: 'Roboto';
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+b {
+    font-size: 2rem;
+}
+
+td img {
+  display: block;
+  margin: auto;
+  width: 60%;
+    filter: brightness(100);
+}
+
+</style>
+  </head>
+  <body>
+    <table cellpadding="0">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <h1>NEEN</h1>
+          <p><span id="time"></span></p>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+    <script lang="js">
+        var fallenSince = new Date("2018/12/18 21:00").getTime();
+
+        function setElapsed() {
+            var elapsed = (Date.now() - fallenSince) / 1000;
+            
+            var out = '<b>';
+            if( elapsed / 86400 >= 1 ) {
+                out += Math.floor(elapsed / 86400);
+                out += '</b> dagen <b>';
+                elapsed = elapsed % 86400;
+            }
+
+            if( elapsed / 3600 >= 1 ) {
+                out += Math.floor(elapsed / 3600);
+                out += '</b> uur <b>';
+                elapsed = elapsed % 3600;
+            }
+
+            if( elapsed / 60 >= 1 ) {
+                out += Math.floor(elapsed / 60);
+                out += '</b> minuten <b>';
+                elapsed = elapsed % 60;
+            }
+
+            out += Math.floor(elapsed);
+            out += '</b> seconden';
+
+            document.getElementById('time').innerHTML = out;
+        }
+
+        setElapsed();
+        setInterval(setElapsed, 1000);
+    </script>
+
+  </body>
+</html>
+
