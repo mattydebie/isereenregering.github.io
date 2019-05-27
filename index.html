@@ -18,15 +18,17 @@
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td colspan="3">
+          <small><span id="time-elections"></span></small>
+          <h4>sinds VK2019</h4>
+        </td>
       </tr>
     </table>
 
 
     <script lang="js">
         var fallenSince = new Date("2018/12/18 21:00").getTime();
+        var election = new Date("2019/5/26 16:00").getTime();
 
         function setElapsed() {
             var elapsed = (Date.now() - fallenSince) / 1000;
@@ -59,9 +61,42 @@
 
             document.getElementById('time').innerHTML = out;
         }
+        function setElapsedElection() {
+            var elapsed = (Date.now() - election) / 1000;
+
+            let out = '';
+            let passed = Math.floor(elapsed / 86400);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += passed == 1? 'dag': 'dagen ';
+                elapsed = elapsed % 86400;
+            }
+
+            passed = Math.floor(elapsed / 3600);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += 'uur ';
+                elapsed = elapsed % 3600;
+            }
+
+            passed = Math.floor(elapsed / 60);
+            if( passed >= 1 ) {
+                out += '<b>' + passed + '</b>';
+                out += passed == 1? 'minuut': 'minuten ';
+                elapsed = elapsed % 60;
+            }
+
+            passed = Math.floor(elapsed);
+            out += '<b>' + passed + '</b>';
+            out += passed == 1? 'seconde': 'seconden';
+
+            document.getElementById('time-elections').innerHTML = out;
+        }
 
         setElapsed();
+        setElapsedElection();
         setInterval(setElapsed, 1000);
+        setInterval(setElapsedElection, 1000);
     </script>
 
   </body>
