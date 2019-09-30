@@ -14,8 +14,8 @@ body {
 
 /* Transparency animation */
 @keyframes bgtransparent {
-  from {background-color: red;}
-  to {background-color: #ff0000aa;}
+  from {background-color: #59C272;}
+  to {background-color: #59C272aa;}
 }
 
 table {
@@ -24,7 +24,7 @@ table {
   border: none;
   table-layout: fixed;
   border-collapse: collapse;
-  background: #ff0000;
+  background: #59C272;
 
   animation-name: bgtransparent;
   animation-duration: 4s;

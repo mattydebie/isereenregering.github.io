@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td colspan="3">
-          <h1>NEEN</h1>
+          <h1>JA</h1>
           <p><span id="time"></span></p>
         </td>
       </tr>
@@ -37,7 +37,7 @@
 
 
     <script lang="js">
-        var fallenSince = new Date("2018/12/18 21:00").getTime();
+        var fallenSince = new Date("2019/09/30 8:30").getTime();
         var election = new Date("2019/5/26 16:00").getTime();
 
         function setElapsed() {
@@ -72,7 +72,7 @@
             document.getElementById('time').innerHTML = out;
         }
         function setElapsedElection() {
-            var elapsed = (Date.now() - election) / 1000;
+            var elapsed = (fallenSince- election) / 1000;
 
             let out = '';
             let passed = Math.floor(elapsed / 86400);
@@ -106,7 +106,6 @@
         setElapsed();
         setElapsedElection();
         setInterval(setElapsed, 1000);
-        setInterval(setElapsedElection, 1000);
     </script>
 
   </body>
